@@ -5,8 +5,11 @@ const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/
 const dataPromise = d3.json(url);
 console.log("Data Promise: ", dataPromise);
 // //Loading data from URL using D3 and console log for verification
+function init() {
+
 let data = d3.json(url).then(function(data) {
     console.log(data);
+
     // define samples for later use
     let samples = data["samples"][0];
     console.log(samples["otu_ids"]);
@@ -29,7 +32,7 @@ let data = d3.json(url).then(function(data) {
         x: otuid,
         y: samplevals,
         mode: 'markers',
-        markers: {
+        marker: {
             size: samplevals,
             color: otuid,
             text: samples["otu_lables"]
@@ -39,6 +42,7 @@ let data = d3.json(url).then(function(data) {
     Plotly.newPlot("bubble",bubbleData);
 });
 
+};
 
 
 
